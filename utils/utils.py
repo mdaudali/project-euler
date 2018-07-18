@@ -13,7 +13,7 @@ def prime_sieve(n):
         for y in range(4, n, 2):
             primes[y] = False
     for x in range(3, int(math.ceil(n / 2.0)), 2):
-        for i in range(x + x, n, x):
+        for i in range(x * x, n, x):  # You don't need to do x + x as 2 * x will be covered by 2, and so on for multiples of x till x * x
             primes[i] = False
     return primes
 
