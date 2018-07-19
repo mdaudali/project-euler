@@ -34,3 +34,20 @@ def get_list_of_primes_pre_calc(gen):
     :return: A list containing only the prime numbers
     """
     return [ind for ind, i in enumerate(gen) if i]
+
+
+def get_proper_divisors(n):
+    """Gets the divisors up to but not including itself
+    
+    Args:
+        n (int): The number to divide
+    """
+
+    divisors = set([1])
+    if n <= 2:
+        return divisors
+    for x in range(2, int(math.ceil(math.sqrt(n)) + 1)):
+        if n % x == 0:
+            divisors.add(x)
+            divisors.add(n // x)
+    return divisors
