@@ -51,3 +51,16 @@ def get_proper_divisors(n):
             divisors.add(x)
             divisors.add(n // x)
     return divisors
+
+def is_prime(n, primes):
+    """Quick primality test using a given list of primes
+    
+    Args:
+        n (int): Number to test
+        primes (int list): list of primes
+    """
+    for x in primes:
+        if n % x == 0:
+            return False
+    else:
+        return True
