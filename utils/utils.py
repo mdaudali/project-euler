@@ -64,3 +64,7 @@ def is_prime(n, primes):
             return False
     else:
         return True
+
+
+def is_palindrome(x):
+    return x == x[::-1]
