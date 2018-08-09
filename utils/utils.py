@@ -52,6 +52,7 @@ def get_proper_divisors(n):
             divisors.add(n // x)
     return divisors
 
+
 def is_prime(n, primes):
     """Quick primality test using a given list of primes
     
@@ -68,3 +69,7 @@ def is_prime(n, primes):
 
 def is_palindrome(x):
     return x == x[::-1]
+
+
+def get_number_digits(x):
+    return int(math.log10(x)) + 1
