@@ -1,4 +1,6 @@
 import math
+import operator
+from functools import reduce
 
 
 def prime_sieve(n):
@@ -74,6 +76,7 @@ def is_palindrome(x):
 def get_number_digits(x):
     return int(math.log10(x)) + 1
 
+
 def convert_roman_to_int(rn):
     mapping = {
         "I": 1,
@@ -103,6 +106,7 @@ def convert_roman_to_int(rn):
             prev_digit = val
     return s
 
+
 def convert_int_to_roman(i):
     mapping = {
         1: 'I',
@@ -128,3 +132,55 @@ def convert_int_to_roman(i):
         else:
             c.pop(0)
     return rn
+
+
+def get_prime_factors(n):
+    """Generate the prime factors of n
+    
+    Args:
+        n (int): the number to factorise
+    """
+    factors = []
+    while n % 2 == 0:
+        factors.append(2)
+        n /= 2
+    m = 3
+    while n != 1:
+        if n % m == 0:
+            factors.append(m)
+            n /= m
+        else:
+            m += 2
+    return factors
+
+
+def euler_totient(n):
+    ps = set(get_prime_factors(n))
+    v = [(p - 1) / p for p in set(ps)]
+    return n * reduce(operator.mul, v)
+
+
+def binary_gcd(u, v):
+    if (u == 0): return v
+    if (v == 0): return u
+    
+    c = 0
+    while (u | v) & 1 == 0:
+        u = u >> 1
+        v = v >> 1
+        c += 1
+    
+    while (u & 1) == 0:
+        u = u >> 1;
+
+    while True:
+        while (v & 1) == 0:
+            v = v >> 1
+
+        if u > v:
+            u, v = v, u
+        
+        v = v - u
+
+        if v == 0:
+            return u << c
