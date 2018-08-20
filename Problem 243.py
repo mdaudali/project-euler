@@ -49,6 +49,7 @@ def get_resilience(d):
 
 
 """Finding composite that is over threshold by just multiplying primes
+A composite of as many primes as possible will have far fewer relative primes, as they just need to share one prime factor to not be coprime
 """
 def euler_product_formula_resilience(ps):
     n = reduce(mul, ps)
@@ -61,7 +62,7 @@ def euler_product_formula_resilience(ps):
 #     if r < THRESHOLD:
 #         print (r, primes[:i])
 #         break
- # ! this has told us it's between 2 x ... 23 and 2 x ... 29
+ # ! this has told us it's between 2 x ... 23 and 2 x ... 29 - as the latter is under threshold but may not be smallest
 
 start = 2 * 3 * 5 * 7 * 11 * 13 * 17 * 19 * 23
 for i in range(start, start * 29, start):  # ! Increment by start as you know it should contain all the primes up to 23
